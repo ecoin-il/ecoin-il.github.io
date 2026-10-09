@@ -1,0 +1,22 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "echo 'static site: no install needed'",
+  "buildCommand": "echo 'static site: no build needed'",
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(self), geolocation=(self), microphone=()" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://tile.openstreetmap.org https://*.tile.openstreetmap.org; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" }
+      ]
+    },
+    { "source": "/sw.js", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
+    { "source": "/(fonts|vendor|icons)/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }] }
+  ]
+}
